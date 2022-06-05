@@ -1,0 +1,84 @@
+@import "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap";
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    .react-select {
+        @apply w-48 items-center text-center
+    }
+    .paginate {
+        @apply w-[100%] h-10 list-none flex justify-center mt-10 ml-0  
+    }
+    .paginate a {
+        @apply p-2 m-2 font-semibold rounded-md border-[1px] border-blue-600 text-blue-600 cursor-pointer hover:text-white hover:bg-blue-600 transition duration-200
+    }
+    .paginate_active a {
+        @apply text-white font-semibold bg-blue-600 transition duration-200
+    }
+
+}
+@layer utilities {
+    .scrollbar::-webkit-scrollbar {
+        @apply w-5
+      }
+    
+      .scrollbar::-webkit-scrollbar-track {
+        @apply bg-gray-200 rounded-lg
+      }
+    
+      .scrollbar::-webkit-scrollbar-thumb {
+        @apply bg-blue-400 rounded-lg transition duration-500
+      }
+    
+      .scrollbar::-webkit-scrollbar-thumb:hover {
+        @apply bg-blue-500
+    }
+}
+
+
+.inputform:invalid[focused="true"] ~ span {
+   visibility: visible;
+}
+.inputform:invalid[focused="true"]{
+    border: 1px solid red;
+ }
+
+ *{
+min-height: 0;
+min-width: 0;
+}
+
+.slider {
+    @apply w-[280px] sm:w-[420px] md:w-[350px] mx-auto mr-32}
+.slider2  {
+    @apply w-full  border-2 rounded-md mx-auto md:w-[70%] lg:w-[45%] xl:w-[35%] mr-0 lg:mr-32
+}
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+
+input[type=range]::-webkit-slider-thumb {
+    pointer-events: auto;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    -webkit-appearance: none;
+    @apply bg-blue-500
+}
+
+
+#__next {
+    height: 100%;
+    position: relative;
+}
