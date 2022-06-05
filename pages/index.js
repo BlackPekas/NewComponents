@@ -12,10 +12,10 @@ export default function Index( { destacados, categorias, anuncios, portada }) {
     </>)}
 
 export async function getServerSideProps() {
-  const data = await fetch(`http://localhost:3000/api/tipo/destacados`)
-  const data2 = await fetch(`http://localhost:3000/api/tipo/categorias`)
-  const data3 = await fetch(`http://localhost:3000/api/tipo/anuncios`)
-  const data4 = await fetch(`http://localhost:3000/api/tipo/portada`)
+  const data = await fetch(`https://new-components-delta.vercel.app/api/tipo/destacados`)
+  const data2 = await fetch(`https://new-components-delta.vercel.app/api/tipo/categorias`)
+  const data3 = await fetch(`https://new-components-delta.vercel.app/api/tipo/anuncios`)
+  const data4 = await fetch(`https://new-components-delta.vercel.app/api/tipo/portada`)
   const des = await data.json()
   const destacados = des.sort(() => 0.5 - Math.random())
   const cat = await data2.json()

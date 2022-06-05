@@ -204,8 +204,8 @@ export default function nombre( {productos, anuncios, query} ) {
 export async function getServerSideProps(context) {
   try {
     const nombre =context.params.nombre
-  const data = await fetch(`http://localhost:3000/api/categorias/${nombre}`); const json = await data.json()
-  const data2 = await fetch(`http://localhost:3000/api/tipo/anuncios`); const json2 = await data2.json()
+  const data = await fetch(`https://new-components-delta.vercel.app/api/categorias/${nombre}`); const json = await data.json()
+  const data2 = await fetch(`https://new-components-delta.vercel.app/api/tipo/anuncios`); const json2 = await data2.json()
   
   return {
     props:{productos : json, anuncios: json2, query: nombre},
@@ -219,8 +219,8 @@ export async function getServerSideProps(context) {
 export async function getStaticProps(context) {
   try {
     const nombre =context.params.nombre
-  const data = await fetch(`http://localhost:3000/api/categorias/${nombre}`); const json = await data.json()
-  const data2 = await fetch(`http://localhost:3000/api/tipo/anuncios`); const json2 = await data2.json()
+  const data = await fetch(`https://new-components-delta.vercel.app/api/categorias/${nombre}`); const json = await data.json()
+  const data2 = await fetch(`https://new-components-delta.vercel.app/api/tipo/anuncios`); const json2 = await data2.json()
   
   return {
     props:{productos : json, anuncios: json2, query: nombre},
@@ -232,7 +232,7 @@ export async function getStaticProps(context) {
   }
 }
 export async function getStaticPaths() {
-  const res = await fetch('http://localhost:3000/api/categorias')
+  const res = await fetch('https://new-components-delta.vercel.app/api/categorias')
   const post = await res.json()
   const paths = post.map((post) => ({
     params: { nombre: post.nombre}
