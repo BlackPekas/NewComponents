@@ -47,18 +47,14 @@ export default function completado() {
       if (producto) {
         const resp = await axios.post('/api/pedido', {producto:producto, id:"z0veCvMfJNYacwze2l9P8XirvSm1", user_id: user.uid, fecha: m, id_pedido:v4()}, {headers: {'Content-Type': 'application/json'}})
         const resp1 = await axios.put('/api/productos/putProducto', {producto:producto, id:"z0veCvMfJNYacwze2l9P8XirvSm1"}, {headers: {'Content-Type': 'application/json'}})
-
         if (resp.status == 200 && resp1.status == 200) {
           localStorage.removeItem('producto')
-          router.reload()
         }
       }else if (carrito) {
         const resp =await axios.post('/api/pedido', {carrito:carrito, id:"z0veCvMfJNYacwze2l9P8XirvSm1", user_id: user.uid, fecha: m, id_pedido:v4()}, {headers: {'Content-Type': 'application/json'}})
         const resp1 = await axios.put('/api/productos/putProducto', {carrito:carrito, id:"z0veCvMfJNYacwze2l9P8XirvSm1"}, {headers: {'Content-Type': 'application/json'}})
-
         if (resp.status == 200 && resp1.status == 200) {
           localStorage.removeItem('carritoprueba2')
-          router.reload()
         }
           
         
