@@ -258,8 +258,8 @@ export default function query( {productos, query, anuncios, categorias, marcas} 
 
 export async function getServerSideProps(context) {
     const { params } = context; const { query } = params
-    const data = await fetch(`https://new-components-delta.vercel.app/api/tipo/destacados`); const json = await data.json()
-    const data2 = await fetch(`https://new-components-delta.vercel.app/api/tipo/anuncios`); const json2 = await data2.json()
+    const data = await fetch(`http://localhost:3000/api/tipo/destacados`); const json = await data.json()
+    const data2 = await fetch(`http://localhost:3000/api/tipo/anuncios`); const json2 = await data2.json()
     const filtrado = json.filter((dato) => dato.nombre2.includes(query))
     const categorias =  query === 'all' ? 
      json.map(dato => {return {"nombre" : dato.categoria} })

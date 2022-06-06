@@ -30,7 +30,7 @@ export default function completado() {
         })
 
     }, [])
-    const { data, error } = useSWR( `https://new-components-delta.vercel.app/api/checkout_sessions/${session_id}`,fetcher)
+    const { data, error } = useSWR( `http://localhost:3000/api/checkout_sessions/${session_id}`,fetcher)
     useEffect(() => {
       if (data && user) {
           putProductos()
@@ -40,7 +40,7 @@ export default function completado() {
     const putProductos = async () => {
       var producto =  localStorage.getItem('producto')
       var carrito = localStorage.getItem('carritoprueba2')
-
+      carrito = JSON.parse(carrito) 
       producto = JSON.parse(producto);
       const date = new Date()
       const m = date.getDate()+"/"+(date.getMonth()+1)+"/"+date.getFullYear()+"   "+date.getHours()+":"+date.getMinutes()+":"+date.getSeconds()
@@ -53,7 +53,6 @@ export default function completado() {
           router.reload()
         }
       }else if (carrito) {
-        carrito = JSON.parse(carrito) 
         const resp =await axios.post('/api/pedido', {carrito:carrito, id:"z0veCvMfJNYacwze2l9P8XirvSm1", user_id: user.uid, fecha: m, id_pedido:v4()}, {headers: {'Content-Type': 'application/json'}})
         const resp1 = await axios.put('/api/productos/putProducto', {carrito:carrito, id:"z0veCvMfJNYacwze2l9P8XirvSm1"}, {headers: {'Content-Type': 'application/json'}})
 

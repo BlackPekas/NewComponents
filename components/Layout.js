@@ -13,7 +13,7 @@ export default function Layout( { children } ) {
     }
     return res.json()
   }
-  const { data} = useSWR(montado ? `https://new-components-delta.vercel.app/api/tipo/destacados` : "", fetcher)
+  const { data} = useSWR(montado ? `http://localhost:3000/api/tipo/destacados` : "", fetcher)
 
   useEffect(() => {
     setMontado(true)

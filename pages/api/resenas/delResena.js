@@ -16,7 +16,6 @@ const añadir = async (req, res) => {
         const reseña = await  db.collection("reseñas").where("id","==",datos.id_resena).get()
         const ref = reseña.docs[0]
         const date = new Date()
-         const m = date.getDate()+"/"+(date.getMonth()+1)+"/"+date.getFullYear()+"   "+date.getHours()+":"+date.getMinutes()+":"+date.getSeconds()
          await ref.ref.delete()
          res.status(200).end('Reseña Eliminada')    
 

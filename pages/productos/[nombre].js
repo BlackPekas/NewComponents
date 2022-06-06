@@ -26,7 +26,7 @@ export default function product( { producto }) {
 export async function getServerSideProps(context) {
   const { params } = context
   const { nombre } = params
-  const data = await fetch(`https://new-components-delta.vercel.app/api/${nombre}`)
+  const data = await fetch(`http://localhost:3000/api/${nombre}`)
   const producto = await data.json()
   return {
     props: { producto : producto },

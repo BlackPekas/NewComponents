@@ -26,7 +26,7 @@ export default function reseña( {nombre, id}) {
 
     const getReseña = async () => {
         const reseña = await axios.get(
-        'https://new-components-delta.vercel.app/api/resenas/getResena',
+        'http://localhost:3000/api/resenas/getResena',
         { params: {nombre:nombre, id:id}},
         {headers: {'Content-Type': 'application/json'}})
     if (reseña.status == 200) {

@@ -7,52 +7,36 @@ export default function extra({producto}) {
     const [rel_prod, setRel_Prod] = useState(null)
     const [stars, setStars] = useState(0)
     const [valoracion, setValoracion] = useState(new Array(6).fill(0))
-    const [dest, setDest] = useState([])
     const [reseñas, setReseñas] = useState([])
     useEffect(() => {
         getCat()
         getVal()
-        setDest([])
         setReseñas([])
     },[producto])
     const getCat = async () => {
-        const productos = await axios.get('https://new-components-delta.vercel.app/api/productos/SimilarProducts',{ params: {categoria: producto.categoria, nombre: producto.nombre}},{headers: {'Content-Type': 'application/json'}})
+        const productos = await axios.get('http://localhost:3000/api/productos/SimilarProducts',{ params: {categoria: producto.categoria, nombre: producto.nombre}},{headers: {'Content-Type': 'application/json'}})
         if (productos.status == 200) {
             setRel_Prod(productos.data)
         }
     }
     const getVal = async () => {
-        const valoraciones = await axios.get('https://new-components-delta.vercel.app/api/resenas/getResenas_prod',{ params: {nombre: producto.nombre}},{headers: {'Content-Type': 'application/json'}})
+        const valoraciones = await axios.get('http://localhost:3000/api/resenas/getResenas_prod',{ params: {nombre: producto.nombre}},{headers: {'Content-Type': 'application/json'}})
         if (valoraciones.status == 200) {
-
-        
             var starss = 0
             var array = new Array(6).fill(0)
             if (valoraciones.data.length > 0) {
                 valoraciones.data.map((dato) => {
                     valoracion.map((dato2, key) => { if(dato.estrellas == key)  {array[key]++}})
                     starss += dato.estrellas
-                })
-                var cont = valoracion.length-1;
-                var destacada = {}
-                while (cont > 0) {
-                    valoraciones.data.map((dato) => {
-                        const estrellas = dato.estrellas
-                        if (estrellas===cont) {
-                            destacada = dato
-                            cont=0;
-                        }else cont-1
-    
-                    })
-                }
-                setReseñas(valoraciones.data.filter((dato => {return dato.id !== destacada.id && dato.texto !== ""})))
-                setDest(destacada)
+                })          
+                setReseñas(valoraciones.data.filter((dato => {return dato})))
                 starss = Math.round(starss/valoraciones.data.length)
                 setStars(starss)
 
             }else setStars(starss)
             
             setValoracion(array)
+
         }
     }
      return (
@@ -133,21 +117,6 @@ export default function extra({producto}) {
               </div>
           
             
-        </div>
-        <div className="flex flex-col flex-1 ">
-       { reseñas.length > 0 ?
-        <>
-                <p className="font-semibold text-xl underline underline-offset-4 mb-7">Reseña Destacada</p>
-
-        <div className="flex justify-items-center content-center text-center justify-center">
-        <Valoracion valoracion={dest}/>
-        </div>
-        </>
-        :
-        <>
-        
-        </>
-       }
         </div>
     </div>
     <div className="flex flex-col flex-1 my-24 ">
