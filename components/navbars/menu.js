@@ -18,7 +18,7 @@ export default function Menu() {
         },[]
     )
     const getCat = async () => {
-        const categorias = await axios.get('http://localhost:3000/api/categorias',{headers: {'Content-Type': 'application/json'}})
+        const categorias = await axios.get('https://new-components-delta.vercel.app/api/categorias',{headers: {'Content-Type': 'application/json'}})
         if (categorias.status == 200) {
             setDatos(categorias.data)
         }

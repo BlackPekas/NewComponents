@@ -30,7 +30,7 @@ export default function completado() {
         })
 
     }, [])
-    const { data, error } = useSWR( `http://localhost:3000/api/checkout_sessions/${session_id}`,fetcher)
+    const { data, error } = useSWR( `https://new-components-delta.vercel.app/api/checkout_sessions/${session_id}`,fetcher)
     useEffect(() => {
       if (data && user) {
           putProductos()

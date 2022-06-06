@@ -14,13 +14,13 @@ export default function extra({producto}) {
         setReseñas([])
     },[producto])
     const getCat = async () => {
-        const productos = await axios.get('http://localhost:3000/api/productos/SimilarProducts',{ params: {categoria: producto.categoria, nombre: producto.nombre}},{headers: {'Content-Type': 'application/json'}})
+        const productos = await axios.get('https://new-components-delta.vercel.app/api/productos/SimilarProducts',{ params: {categoria: producto.categoria, nombre: producto.nombre}},{headers: {'Content-Type': 'application/json'}})
         if (productos.status == 200) {
             setRel_Prod(productos.data)
         }
     }
     const getVal = async () => {
-        const valoraciones = await axios.get('http://localhost:3000/api/resenas/getResenas_prod',{ params: {nombre: producto.nombre}},{headers: {'Content-Type': 'application/json'}})
+        const valoraciones = await axios.get('https://new-components-delta.vercel.app/api/resenas/getResenas_prod',{ params: {nombre: producto.nombre}},{headers: {'Content-Type': 'application/json'}})
         if (valoraciones.status == 200) {
             var starss = 0
             var array = new Array(6).fill(0)
