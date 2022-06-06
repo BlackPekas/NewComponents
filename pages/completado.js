@@ -38,7 +38,9 @@ export default function completado() {
     }, [data, user])
     useEffect(() => {console.log(error);},[error])
     const putProductos = async () => {
-      var producto =  localStorage.getItem('producto');
+      var producto =  localStorage.getItem('producto')
+      var carrito = localStorage.getItem('carritoprueba2')
+
       producto = JSON.parse(producto);
       const date = new Date()
       const m = date.getDate()+"/"+(date.getMonth()+1)+"/"+date.getFullYear()+"   "+date.getHours()+":"+date.getMinutes()+":"+date.getSeconds()
@@ -50,8 +52,7 @@ export default function completado() {
           localStorage.removeItem('producto')
           router.reload()
         }
-      }else {
-        var carrito = localStorage.getItem('carritoprueba2')
+      }else if (carrito) {
         carrito = JSON.parse(carrito) 
         const resp =await axios.post('/api/pedido', {carrito:carrito, id:"z0veCvMfJNYacwze2l9P8XirvSm1", user_id: user.uid, fecha: m, id_pedido:v4()}, {headers: {'Content-Type': 'application/json'}})
         const resp1 = await axios.put('/api/productos/putProducto', {carrito:carrito, id:"z0veCvMfJNYacwze2l9P8XirvSm1"}, {headers: {'Content-Type': 'application/json'}})
