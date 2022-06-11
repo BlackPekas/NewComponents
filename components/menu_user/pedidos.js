@@ -56,7 +56,7 @@ export default function pedidos() {
                     <div className=' flex flex-1 flex-col m-4'>
                         {pedido.productos.map((producto, key) => {
                             const precio = parseFloat(parseFloat(producto.precio_unidad)*producto.unidades).toFixed(2)
-                            total += parseFloat(precio).toFixed(2)
+                            total += parseFloat(precio)
                             return (
                                 <>
                                 <div key={key} className='grid grid-cols-1 sm:flex md:i m-3'>

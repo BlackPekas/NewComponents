@@ -45,7 +45,7 @@ export default function del_producto({id}) {
                 }
             })
      }else {
-         Swal.fire({title:"Categoria no seleccionada",text:"No se encuentra ninguna categoria seleccionada",icon:"warning"})
+         Swal.fire({title:"Categoría no seleccionada",text:"No se encuentra ninguna categoría seleccionada",icon:"warning"})
      }
     }
   return (

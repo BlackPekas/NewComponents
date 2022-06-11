@@ -29,8 +29,8 @@ export default function del_cat({id}) {
         
      if (selected) {
         Swal.fire({
-            title:"Eliminar Categoria",
-            text: "¿Estás seguro de eliminar la categoria?",
+            title:"Eliminar Categoría",
+            text: "¿Estás seguro de eliminar la Categoría?",
             icon: "question",
             showCancelButton: true,
             showConfirmButton: true,
@@ -38,27 +38,27 @@ export default function del_cat({id}) {
             cancelButtonText: 'NO',}).then( async (resp) => {
                 if (resp.isConfirmed) {
                 const resul = await axios.delete('/api/categorias/DelCategoria', {data: {value :selected.value, id:id}},{headers: {'Content-Type': 'application/json'}})
-                if (resul.status == 200)  {Swal.fire({title:"Categoria Eliminada",text:"Se ha eliminado la caegoria correctamente",icon:"success"})
+                if (resul.status == 200)  {Swal.fire({title:"Categoría Eliminada",text:"Se ha eliminado la caegoria correctamente",icon:"success"})
                     router.reload()
                 }
-                else   Swal.fire({title:"Error Categoria",text:"La categoria contiene productos",icon:"warning"})
+                else   Swal.fire({title:"Error Categoría",text:"La Categoría contiene productos",icon:"warning"})
             }
             })
      }else {
-         Swal.fire({title:"Categoria no seleccionada",text:"No se encuentra ninguna categoria seleccionada",icon:"warning"})
+         Swal.fire({title:"Categoría no seleccionada",text:"No se encuentra ninguna Categoría seleccionada",icon:"warning"})
      }
     }
   return (
     <div>
     <div className='w-full border-b-2'>
-      <h2 className='m-[23px] md:m-3  font-bold'>Eliminar Categoria</h2>
+      <h2 className='m-[23px] md:m-3  font-bold'>Eliminar Categoría</h2>
     </div>
     <div className='m-24'>
     {
          cat.length !== 0 &&
          <div className='flex flex-col flex-1  items-center justify-content content-center space-y-4'>
-             <span className='font-semibold'> Categoria</span>
-             <Select className='react-select' value={selected} onChange={handleselect} options={cat} isSearchable={false} placeholder='Categoria'/>
+             <span className='font-semibold'> Categoría</span>
+             <Select className='react-select' value={selected} onChange={handleselect} options={cat} isSearchable={false} placeholder='Categoría'/>
              <button onClick={DelCat} className='p-2 w-24 text-white bg-blue-500 shadow-xl rounded-lg hover:bg-blue-600 transition duration-300'> Eliminar </button>
          </div>
         }

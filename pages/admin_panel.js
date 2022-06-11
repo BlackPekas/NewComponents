@@ -47,9 +47,9 @@ export default function admin_panel() {
                 <div className='w-[30vh] border-r-2' >
                         <div className='flex flex-1 flex-col text-start content-start '>
                                     <span className={`h-[72px] md:h-[50px] p-3 border-b-2`}></span> 
-                                    <span onClick={() =>setOpcion(1)} className={` p-3 cursor-pointer hover:bg-blue-200 transition duration-300 border-b-2`}>Crear Categoria</span> 
+                                    <span onClick={() =>setOpcion(1)} className={` p-3 cursor-pointer hover:bg-blue-200 transition duration-300 border-b-2`}>Crear Categoría</span> 
                                     <span onClick={() =>setOpcion(2)} className={` p-3 cursor-pointer hover:bg-blue-200 transition duration-300 border-b-2`}>Añadir Producto</span> 
-                                    <span onClick={() =>setOpcion(3)} className={` p-3 cursor-pointer hover:bg-blue-200 transition duration-300 border-b-2`}>Eliminar Categoria</span> 
+                                    <span onClick={() =>setOpcion(3)} className={` p-3 cursor-pointer hover:bg-blue-200 transition duration-300 border-b-2`}>Eliminar Categoría</span> 
                                     <span onClick={() =>setOpcion(4)} className={` p-3 cursor-pointer hover:bg-blue-200 transition duration-300 border-b-2`}>Eliminar Producto</span> 
                                     <span onClick={() =>setOpcion(5)} className={` p-3 cursor-pointer hover:bg-blue-200 transition duration-300 border-b-2`}>Actualizar Stock</span> 
                                     <span onClick={cerrarSesion} className={` p-3 cursor-pointer hover:bg-blue-200 transition duration-300 border-b-2`}>Cerrar Sesión</span> 
