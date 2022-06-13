@@ -4,7 +4,6 @@ import Stripe from 'stripe'
 const stripe = new Stripe(`${process.env.STRIPE_SECRET_KEY}`)    
 
 export  default async  (req, res) => {
-    console.log(req.body);
     auth.getUserByEmail('admin@admin.com').then((userRecord) => {
         const user = userRecord.toJSON();
         user.uid = req.body.id ? añadir(req,res)
@@ -18,7 +17,6 @@ export  default async  (req, res) => {
 const añadir = async (req, res) => {
     if (req.method === 'POST') {
         const producto = req.body.producto
-        console.log(producto);
         stripe.products.create({
          name: producto.nombre,
      }).then( async (log) => {
